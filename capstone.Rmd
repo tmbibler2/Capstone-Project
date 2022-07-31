@@ -1,0 +1,54 @@
+---
+title: "Exploration of Data"
+author: "Trinity Bibler"
+date: '2022-07-31'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readxl)
+```
+
+## Summary Statistics and Cleaning the Data
+
+```{r}
+drug_df <- read_excel("drugoverdoses.xlsx")
+
+drug_df_clean <- drug_df %>%
+  rename(deaths_20 = `Deaths - 2020`, 
+         population_20 = `Population - 2020`, 
+         crude_rate_20 = `Crude Rate - 2020`,
+         age_adjusted_20 = `Age-Adjusted Rate - 2020`,
+         deaths_19 = `Deaths - 2019`,
+         population_19 = `Population - 2019`,
+         crude_rate_19 = `Crude Rate - 2019`,
+         age_adjusted_19 = `Age-Adjusted Rate - 2019`,
+         deaths_18 = `Deaths - 2018`,
+         population_18 = `Population - 2018`,
+         crude_rate_18 = `Crude Rate - 2018`,
+         age_adjusted_18 = `Age-Adjusted Rate - 2018`,
+         deaths_17 = `Deaths - 2017`,
+         population_17 = `Population - 2017`,
+         crude_rate_17 = `Crude Rate - 2017`,
+         age_adjusted_17 = `Age-Adjusted Rate - 2017`,
+         deaths_16 = `Deaths - 2016`,
+         population_16 = `Population - 2016`,
+         crude_rate_16 = `Crude Rate - 2016`,
+         age_adjusted_16 = `Age-Adjusted Rate - 2016`
+  )
+
+drug_deaths <- drug_df_clean %>%
+  select(deaths_20, deaths_19, deaths_18, deaths_17, deaths_16)
+
+drug_deaths_clean <- drug_deaths[-c(52:56),]
+
+transform(drug_deaths_clean, deaths_20 = as.numeric(deaths_20))
+
+summary <- drug_deaths_clean %>%
+  summarize_all(list(mean, median, sd, IQR, min, max))
+
+summary_clean <- summary %>%
+  rename()
+```
