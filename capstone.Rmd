@@ -52,3 +52,14 @@ summary <- drug_deaths_clean %>%
 summary_clean <- summary %>%
   rename()
 ```
+
+#Writing Clean Table to CSV file
+
+```{r}
+drug_deaths_by_state <- drug_df_clean %>%
+  select(State, deaths_20, deaths_19, deaths_18, deaths_17, deaths_16)
+
+drug_deaths_by_state2 <- drug_deaths_by_state[-c(52:56),]
+
+write.csv(drug_deaths_by_state2, file = "drug_deaths.csv")
+```
