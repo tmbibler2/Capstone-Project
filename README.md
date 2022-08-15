@@ -3,7 +3,7 @@
 
 Introduction
 
-For my capstone project, I will be creating a predictive model using teenage drug use and drug overdose death data. Using this model, the healthcare industry would be able to more accurately distribute Naloxone (the drug used to reverse overdoses), and educators would be able to introduce a program to better educate children in high-risk areas. In this paper, two sources will be evaluated. These sources describe two machine learning projects that were done to predict opioid overdoses. 
+For my capstone project, I will be creating a predictive model using drug overdose death data. Using this model, the healthcare industry would be able to more accurately distribute Naloxone (the drug used to reverse overdoses), and educators would be able to introduce a program to better educate children in high-risk areas. In this paper, two sources will be evaluated. These sources describe two machine learning projects that were done to predict opioid overdoses. 
 
 Literature Review
 
@@ -86,18 +86,9 @@ For my model, I used a random forest algorithm to predict the deaths in each sta
 
 For the hyperparameter tuning, I will be adjusting the amount of data I use, as well as the random state number and number of estimators as shown below. 
 
-
-
-(There will be more in this section once I perfect my code) 
-
 I used a random forest algorithm because many prediction examples referenced online used a random forest. One of the big disadvantages of the random forest algorithm is that it can take too much memory when working with a large dataset. My data set is rather small, so I used random forest. 
 
-Preliminary Visualization
-
-I created a graph for the predicted values versus the actual values. It is shown below. As you can see, my program’s predicted values are not very close to the actual values. The goal is not really for it to be close to the actual values, as drug overdoses are increasing year by year. Once I finish hyperparameter tuning my program, I will get a little closer to my goal. 
-
-
-
+After creating the random forest model, I realized that it was not working for my dataset. I did some more research and ended up creating a linear regression model for my data.  The random forest model had an accuracy of about 93% but I was struggling to include all of the data, so I used a linear regression model in Python using Sklearn. Based on the visualization of the results, the linear regression model was not as accurate but it included predictions for all states based on the 2020 drug overdose death data. 
 
 
 References
